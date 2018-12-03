@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+   <div class="row">
+      <div class="col-md-6 text-center mb-3">
+         <span id="userCount"></span> users
+      </div>
+      <div class="col-md-6 offset-md-3">
+         <form method='POST' novalidate>
+            {% csrf_token %}
+            {% for field in form %}
+               <div class="form-group">
+                  {{ field }}
+                  <small class="form-text text-muted">
+                     {{ field.errors }}
+                  </small>
+               </div>
+            {% endfor %}
+            <div class="form-group">
+               <button class="btn btn-default" id="btnAdd" type="submit">Submit</button>
+            </div>
+         </form>
+      </div>
+   </div>
+{% endblock content %}
